@@ -15,3 +15,17 @@ git submodule update
 cp conf.php-dist conf.php
 nano conf.php # adapt to your needs
 ```
+
+# Apache Configuration
+```apache
+<Directory /var/www/securearea>
+AuthType Basic
+AuthName "Restricted"
+AuthBasicProvider external
+AuthExternal special-auth
+require valid-user
+</Directory>
+
+AddExternalAuth special-auth /path/to/apache-extauth-modulekit/check_user
+SetExternalAuthMethod special-auth pipe
+```
