@@ -1,0 +1,15 @@
+#!/usr/bin/php
+<?php
+include 'conf.php';
+include 'modulekit/loader.php';
+
+$user = chop(fgets(STDIN));
+$passwd = chop(fgets(STDIN));
+
+$auth = new Auth($auth_config);
+$res = $auth->authenticate($user, $passwd);
+
+if ($res === true) {
+  exit(0);
+}
+exit(1);
